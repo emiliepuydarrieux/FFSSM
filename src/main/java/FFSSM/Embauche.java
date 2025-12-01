@@ -15,5 +15,18 @@ public class Embauche {
         this.debut = debut;
     }
 
+    public void terminer(LocalDate fin) {
+        this.fin = fin;
+    }
+
+    public boolean estTerminee() {
+        return fin != null;
+    }
+
+    public Club employeur() {
+        return null;
+    }
+
+
     
 }

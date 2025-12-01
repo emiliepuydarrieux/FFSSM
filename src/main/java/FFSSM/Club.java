@@ -3,6 +3,7 @@
  */
 package FFSSM;
 
+import java.util.List;
 import java.util.Set;
 
 import lombok.Getter;
@@ -34,17 +35,24 @@ public class Club {
      * @return l'ensemble des plongées non conformes
      */
     public Set<Plongee> plongeesNonConformes() {
-         // TODO: Implémenter cette méthode
-        throw new UnsupportedOperationException("Pas encore implémenté");
+        List<Plongee> nonConformes=null;
+        for (Plongee p : /* TODO: obtenir les plongées du club */) {
+            if p.estConforme() == false {
+                nonConformes.add(p)
+                ;
+        }
     }
+};
+
+
 
     /**
      * Enregistre une nouvelle plongée organisée par ce club
      * @param p la nouvelle plongée
      */
     public void organisePlongee(Plongee p) {
-         // TODO: Implémenter cette méthode
-        throw new UnsupportedOperationException("Pas encore implémenté");
+        
+        
     }
 
 

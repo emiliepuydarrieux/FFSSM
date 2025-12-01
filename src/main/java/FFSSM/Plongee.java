@@ -4,6 +4,7 @@
 package FFSSM;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class Plongee {
 
@@ -25,9 +26,10 @@ public class Plongee {
 		this.duree = duree;
 	}
 
+	private List<Plongeur> participants;
+
 	public void ajouteParticipant(Plongeur participant) {
-		// TODO: Implémenter cette méthode
-		throw new UnsupportedOperationException("Pas encore implémenté");
+
 	}
 
 	/**
@@ -37,8 +39,13 @@ public class Plongee {
 	 * @return vrai si la plongée est conforme
 	 */
 	public boolean estConforme() {
-		// TODO: Implémenter cette méthode
-		throw new UnsupportedOperationException("Pas encore implémenté");
+		for (Plongeur p : participants) {
+			Licence l = p.derniereLicence();
+			if (l == null || !l.estValide(this.date)) {
+				return false;
+			}
+		}
+		return true;
 	}
 
 }

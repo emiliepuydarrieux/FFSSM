@@ -1,15 +1,15 @@
-/**
- * @(#) Moniteur.java
- */
 package FFSSM;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.ArrayList;
+import java.util.Collections;
 
 public class DiplomeDeMoniteur {
 
     private final int numeroDiplome;
     private final Plongeur possesseur;
+    private final List<Embauche> emplois = new ArrayList<>();
 
     public DiplomeDeMoniteur(Plongeur possesseur, int numeroDiplome) {
         this.numeroDiplome = numeroDiplome;
@@ -22,8 +22,15 @@ public class DiplomeDeMoniteur {
      * @return l'employeur actuel de ce moniteur ou null s'il n'en a pas
      */
     public Club employeurActuel() {
-         // TODO: Implémenter cette méthode
-        throw new UnsupportedOperationException("Pas encore implémenté");
+        List<Embauche> liste = emplois();
+        if (liste == null || liste.isEmpty()) {
+            return null;
+        }
+        Embauche derniere = liste.get(liste.size() - 1);
+        if (derniere.estTerminee()) {
+            return null;
+        }
+        return derniere.employeur();
     }
     
     /**
@@ -32,13 +39,13 @@ public class DiplomeDeMoniteur {
      * @param debutNouvelle la date de début de l'embauche
      */
     public void nouvelleEmbauche(Club employeur, LocalDate debutNouvelle) {   
-         // TODO: Implémenter cette méthode
-        throw new UnsupportedOperationException("Pas encore implémenté");	    
+        // on suppose que possesseur est en fait un Moniteur
+        Embauche e = new Embauche(debutNouvelle, this, employeur);
+        emplois.add(e);	    
     }
 
     public List<Embauche> emplois() {
-         // TODO: Implémenter cette méthode
-        throw new UnsupportedOperationException("Pas encore implémenté");
+        return Collections.unmodifiableList(emplois);
     }
 
 }
