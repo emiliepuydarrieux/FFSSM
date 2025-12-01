@@ -34,15 +34,19 @@ public class Club {
      * valide à la date de la plongée
      * @return l'ensemble des plongées non conformes
      */
+
+    private List<Plongee> plongees;
     public Set<Plongee> plongeesNonConformes() {
-        List<Plongee> nonConformes=null;
-        for (Plongee p : /* TODO: obtenir les plongées du club */) {
-            if p.estConforme() == false {
+        Set<Plongee> nonConformes=null;
+        for (Plongee p : plongees) {
+            if (p.estConforme() == false) {
                 nonConformes.add(p)
                 ;
         }
     }
-};
+    return nonConformes;
+}
+
 
 
 
@@ -51,6 +55,7 @@ public class Club {
      * @param p la nouvelle plongée
      */
     public void organisePlongee(Plongee p) {
+        plongees.add(p);
         
         
     }
